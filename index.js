@@ -2,7 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import productRoute from "./routes/productRoute.js";
+import productRoute from "./routes/products.js";
+import authRoute from "./routes/auth.js";
+import userRoute from "./routes/user.js";
 
 const app = express();
 dotenv.config();
@@ -16,6 +18,8 @@ mongoose
 
 app.use(express.json());
 
-app.use("/api/v1/product", productRoute);
+app.use("/api/v1/products", productRoute);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1", userRoute);
 
-app.listen(process.env.PORT, () => console.log(`App running on Port ${port}`));
+app.listen(port, () => console.log(`App running on Port ${port}`));
