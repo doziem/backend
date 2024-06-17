@@ -1,8 +1,13 @@
 import express from "express";
-import { findAllUser } from "../controller/userController.js";
-
 const router = express.Router();
+import {
+  findAllUser,
+  deleteUser,
+  findOneUser,
+} from "../controller/userController.js";
 
-router.get("/user", findAllUser);
+router.delete("/:id", deleteUser);
+router.get("/find/:id", findOneUser);
+router.get("/all", findAllUser);
 
 export default router;
